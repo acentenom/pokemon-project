@@ -1,6 +1,8 @@
 "use strict";
 const axios = require("axios");
 
+//Hace el llamado a la api externa para traer todos los pokemons
+
 const getPokemonsService = async () => {
   try {
     let arrayPokemons = [];
@@ -10,7 +12,7 @@ const getPokemonsService = async () => {
       arrayPokemons.push(...pokemons.results);
       url = pokemons.next;
     }
-    let allPokemons = await Promise.all(
+    const allPokemons = Promise.all(
       arrayPokemons.map(async (p) => {
         let pokemon = await axios(p.url);
         return pokemon.data;
@@ -22,24 +24,18 @@ const getPokemonsService = async () => {
   }
 };
 
-module.exports = {
-  getPokemonsService,
+const getPokemonsByIdService = async (id) => {
+  try {
+    const { data: pokemonById } = await axios(
+      `https://pokeapi.co/api/v2/pokemon/${id}`
+    );
+    return pokemonById;
+  } catch (error) {
+    throw error;
+  }
 };
 
-/* try {
-  //const url = "https://pokeapi.co/api/v2/pokemon";
-  let arr = [];
-  //let num = 0;
-  //let url = `https://pokeapi.co/api/v2/pokemon?offset=${0}}&limit=${20}`
-  for(let i = 0; i <= 100; i) {
-    let url = await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${i}&limit=20`)
-    console.log("++++++>>>>",i);
-    i += 20;
-    console.log('urldata------- :>> ', url.data);
-    arr = [...arr,...url.data.results]
-    console.log('arr-**-*-*-*--*-**--*-* :>> ', arr);
-  }
-  return arr;
-} catch (error) {
-  throw error;
-} */
+module.exports = {
+  getPokemonsService,
+  getPokemonsByIdService,
+};
