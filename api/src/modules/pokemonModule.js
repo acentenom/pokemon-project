@@ -4,6 +4,8 @@ const {
   getPokemonsByIdService,
 } = require("../services/pokemonService");
 
+const { savePokemonService } = require('../handlers/savePokemonHandler')
+
 //Traigo todos los pokemons para la home
 
 const getPokemonModule = async () => {
@@ -47,7 +49,19 @@ const getPokemonsByIdModule = async (id) => {
   }
 };
 
+//Guardar pokemon
+
+const savePokemonModule = async (body) => {
+  try {
+    const savePokemon = await savePokemonService(body);
+    return savePokemon;
+  } catch (error) {
+   throw error;
+  }
+}
+
 module.exports = {
   getPokemonModule,
   getPokemonsByIdModule,
+  savePokemonModule
 };
