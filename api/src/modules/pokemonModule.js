@@ -4,14 +4,15 @@ const {
   getPokemonsByIdService,
 } = require("../services/pokemonService");
 
-const { savePokemonService } = require('../handlers/savePokemonHandler')
+const { savePokemonService, getPokemonFromDB, pokemonByIdFromDB } = require('../handlers/savePokemonHandler')
 
 //Traigo todos los pokemons para la home
 
 const getPokemonModule = async () => {
   try {
-    const pokemons = await getPokemonsService();
-    const allPokemons = pokemons.map((p) => {
+    let pokemons = await getPokemonsService();
+    let pokemonsDB = await getPokemonFromDB()
+    let pokemonsForm = pokemons.map((p) => {
       const types = p.types.map((t) => t.type.name);
 
       return {
@@ -21,6 +22,7 @@ const getPokemonModule = async () => {
         type: types,
       };
     });
+    let allPokemons = pokemonsForm.concat(pokemonsDB);
     return allPokemons;
   } catch (error) {
     throw error;
@@ -32,6 +34,11 @@ const getPokemonModule = async () => {
 const getPokemonsByIdModule = async (id) => {
   console.log("id :>> ", id);
   try {
+    if(id.includes("-")) {
+      let pokemonIdFromDB = await pokemonByIdFromDB(id)
+      console.log('object :>> ', pokemonIdFromDB);
+      return pokemonIdFromDB
+    }
     let pokemonById = await getPokemonsByIdService(id);
     return {
       id: pokemonById.id,
