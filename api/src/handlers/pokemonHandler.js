@@ -62,7 +62,7 @@ const searchByNameFromDB = async (name) => {
     const searchByName = await Pokemon.findAll({
       where: {
         name: {
-          [Op.like]: `${name}%`
+          [Op.like]: `%${name}%`
         }
       },
       include: [{
