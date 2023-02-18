@@ -35,7 +35,18 @@ const getPokemonsByIdService = async (id) => {
   }
 };
 
+const searchByNameServer = async (name) => {
+  try {
+    const { data: searchByName } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    return searchByName;
+  } catch (error) {
+    throw error;
+  }
+};
+
+
 module.exports = {
   getPokemonsService,
   getPokemonsByIdService,
+  searchByNameServer
 };

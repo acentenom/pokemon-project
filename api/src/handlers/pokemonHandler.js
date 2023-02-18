@@ -6,7 +6,6 @@ const { Op } = require("sequelize");
 const savePokemonService = async (body) => {
   try {
     const savePokemon = await Pokemon.create(body);
-    console.log("body :>> ", body);
     const findType = await Type.findAll({
       where: {
         name: {
@@ -15,7 +14,6 @@ const savePokemonService = async (body) => {
       },
     });
     savePokemon.addType(findType);
-    console.log("savePokemon :>> ", savePokemon);
     return savePokemon;
   } catch (error) {
     throw error;
@@ -43,7 +41,6 @@ const getPokemonFromDB = async () => {
 //Busca pokemon por id en la base de datos
 
 const pokemonByIdFromDB = async (id) => {
-  console.log('id---- :>> ', id);
   try {
     const findByIdDB = await Pokemon.findOne({
       where: {
@@ -58,10 +55,30 @@ const pokemonByIdFromDB = async (id) => {
   } catch (error) {
     throw error;
   }
-}
+};
+
+const searchByNameFromDB = async (name) => {
+  try {
+    const searchByName = await Pokemon.findAll({
+      where: {
+        name: {
+          [Op.like]: `${name}%`
+        }
+      },
+      include: [{
+        model: Type,
+        attributes: ["name"]
+      }]
+    });
+    return searchByName;
+  } catch (error) {
+    throw error;
+  }
+};
 
 module.exports = {
   savePokemonService,
   getPokemonFromDB,
-  pokemonByIdFromDB
+  pokemonByIdFromDB,
+  searchByNameFromDB
 };
