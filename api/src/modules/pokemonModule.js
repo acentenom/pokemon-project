@@ -4,7 +4,7 @@ const {
   getPokemonsByIdService,
   searchByNameServer
 } = require("../services/pokemonService");
-const { savePokemonService, getPokemonFromDB, pokemonByIdFromDB } = require('../handlers/savePokemonHandler')
+const { savePokemonService, getPokemonFromDB, pokemonByIdFromDB, searchByNameFromDB } = require('../handlers/pokemonHandler')
 
 //Traigo todos los pokemons para la home
 
@@ -14,7 +14,6 @@ const getPokemonModule = async () => {
     let pokemonsDB = await getPokemonFromDB()
     let pokemonsForm = pokemons.map(p => {
       const types = p.types.map((t) => t.type.name);
-
       return {
         id: p.id,
         name: p.name,
@@ -67,7 +66,19 @@ const savePokemonModule = async (body) => {
 
 const searchByNameModule = async (name) => {
   try {
-    const searchByName = await searchByNameServer(name);
+    let nameLowercase = name.toLowerCase()
+    const searchFromDB = await searchByNameFromDB(nameLowercase);
+    if(searchFromDB.length !== 0) {
+     return searchFromDB.map(d => {
+      return {
+        id: d.id,
+        name: d.name,
+        image: d.image,
+        type: d.types.map(t => t.name)
+      }
+     })
+    }
+    const searchByName = await searchByNameServer(nameLowercase);
     return {
       id: searchByName.id,
       name: searchByName.name,
