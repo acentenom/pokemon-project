@@ -7,7 +7,7 @@ const getPokemonsService = async () => {
   try {
     let arrayPokemons = [];
     let url = "http://pokeapi.co/api/v2/pokemon";
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 7; i++) {
       const { data: pokemons } = await axios(url);
       arrayPokemons.push(...pokemons.results);
       url = pokemons.next;
