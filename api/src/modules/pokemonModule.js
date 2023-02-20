@@ -12,16 +12,24 @@ const getPokemonModule = async () => {
   try {
     let pokemons = await getPokemonsService();
     let pokemonsDB = await getPokemonFromDB()
+    let poke = pokemonsDB.map(el => {
+      return {
+        id: el.id,
+        name: el.name.charAt(0).toUpperCase() + el.name.slice(1),
+        image: el.image,
+        type: el.types.map(t => t.name)
+      }
+    })
     let pokemonsForm = pokemons.map(p => {
       const types = p.types.map((t) => t.type.name);
       return {
         id: p.id,
-        name: p.name,
+        name: p.name.charAt(0).toUpperCase() + p.name.slice(1),
         image: p.sprites.other.dream_world.front_default,
         type: types,
       };
     });
-    let allPokemons = pokemonsForm.concat(pokemonsDB);
+    let allPokemons = pokemonsForm.concat(poke);
     return allPokemons;
   } catch (error) {
     throw error;
@@ -39,14 +47,14 @@ const getPokemonsByIdModule = async (id) => {
     let pokemonById = await getPokemonsByIdService(id);
     return {
       id: pokemonById.id,
-      name: pokemonById.name,
+      name: pokemonById.name.charAt(0).toUpperCase() + pokemonById.name.slice(1),
       image: pokemonById.sprites.other.dream_world.front_default,
       attack: pokemonById.stats[1].base_stat,
       defense: pokemonById.stats[2].base_stat,
       speed: pokemonById?.stats[5].base_stat,
       height: pokemonById?.height,
       weight: pokemonById?.weight,
-      types: pokemonById?.types.map((t) => t.type.name),
+      type: pokemonById?.types.map((t) => t.type.name),
     };
   } catch (error) {
     throw error;
@@ -72,7 +80,7 @@ const searchByNameModule = async (name) => {
      return searchFromDB.map(d => {
       return {
         id: d.id,
-        name: d.name,
+        name: d.name.charAt(0).toUpperCase() + d.name.slice(1),
         image: d.image,
         type: d.types.map(t => t.name)
       }
@@ -81,7 +89,7 @@ const searchByNameModule = async (name) => {
     const searchByName = await searchByNameServer(nameLowercase);
     return {
       id: searchByName.id,
-      name: searchByName.name,
+      name: searchByName.name.charAt(0).toUpperCase() + searchByName.name.slice(1),
       image: searchByName.sprites.other.dream_world.front_default,
       type: searchByName?.types.map((t) => t.type.name)
     }
