@@ -1,0 +1,22 @@
+.image {
+    background-image: url("../../image/poke-wallpaper.jpg");
+    height: 80vh;
+    width: 190vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: auto;
+    display: block;
+    padding: 8px;
+    margin-top: 150px;
+}
+
+.goHome {
+    width: 35rem;
+    height: 8rem;
+    margin-top: -140px;
+}
+
+.goHome:hover {
+    width: 40rem;
+    height: 12rem;
+}
