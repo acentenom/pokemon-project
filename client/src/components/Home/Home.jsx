@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getPokemons } from "../../redux/action";
 import CardPokemon from "../CardPokemon/CardPokemon";
-import style from "../Home/homeModule.css"
+import style from "../Home/home.module.css"
 
 
 const Home = () => {
@@ -18,10 +18,14 @@ useEffect(() => {
     return (
         <div className={style.fondo}>
             <Link to='/pokemon'>Create Pokemon</Link>
-            <div>
+            <div className={style.containerCard}>
                 {allPokemons?.map(p => {
                     return (
-                    <CardPokemon key={p.id} name={p.name} image={p.image} type={[p.type].join(", ")} />
+                    <div>
+                        <div>
+                    <CardPokemon key={p.id} name={p.name} image={p.image} type={p.type} />
+                    </div>
+                       </div>
                 )})}
             </div>
         </div>

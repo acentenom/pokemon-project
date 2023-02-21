@@ -1,0 +1,20 @@
+
+.containerCard {
+    display: grid;
+    grid-template-columns: repeat(4, 50fr);
+    grid-gap: 60px;
+    justify-items: center;
+}
+
+
+.cardDisign {
+    background: rgba(169, 159, 140, 0.807);
+    border-radius: 60% 10% / 10% 40%;
+    width: 380px;
+    height: 90%;
+    border: 8px solid rgb(13, 8, 4);
+    margin: none;
+    padding: 10px;
+    font-size: 25px;
+    text-align: center;
+}
