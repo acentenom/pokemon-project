@@ -1,4 +1,4 @@
-import { GET_ALL_POKEMONS } from '../action/index';
+import { GET_ALL_POKEMONS, GET_SEARCH } from '../action/index';
 
 const initialState = {
     pokemons: []
@@ -10,7 +10,12 @@ const pokemonReducer = (state = initialState, action) => {
             return {
                 ...state,
                 pokemons: action.payload
-            }
+            };
+            case GET_SEARCH:
+                return {
+                    ...state,
+                    pokemons: action.payload
+                };
             default: return state;
     }
 }
