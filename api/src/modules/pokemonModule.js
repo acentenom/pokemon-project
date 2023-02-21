@@ -87,12 +87,12 @@ const searchByNameModule = async (name) => {
      })
     }
     const searchByName = await searchByNameServer(nameLowercase);
-    return {
+    return [{
       id: searchByName.id,
       name: searchByName.name.charAt(0).toUpperCase() + searchByName.name.slice(1),
       image: searchByName.sprites.other.dream_world.front_default,
       type: searchByName?.types.map((t) => t.type.name)
-    }
+    }]
   } catch (error) {
     throw error;
   }

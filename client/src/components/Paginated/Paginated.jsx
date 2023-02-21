@@ -11,8 +11,8 @@ const Paginated = ({ porPagina, paginadoDePokemon, allPokemons }) => {
       <ul>
         {pageNumbers &&
           pageNumbers.map((num) => (
-            <li>
-              <button onClick={() => paginadoDePokemon(num)}>{num}</button>
+            <li key={num}>
+              <button key={num} onClick={() => paginadoDePokemon(num)}>{num}</button>
             </li>
           ))}
       </ul>
