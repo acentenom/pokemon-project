@@ -17,11 +17,11 @@ const getPokemonModule = async () => {
         id: el.id,
         name: el.name.charAt(0).toUpperCase() + el.name.slice(1),
         image: el.image,
-        type: el.types.map(t => t.name)
+        type: el.types.map(t => t.name.charAt(0).toUpperCase() + t.name.slice(1))
       }
     })
     let pokemonsForm = pokemons.map(p => {
-      const types = p.types.map((t) => t.type.name);
+      const types = p.types.map((t) => t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1));
       return {
         id: p.id,
         name: p.name.charAt(0).toUpperCase() + p.name.slice(1),

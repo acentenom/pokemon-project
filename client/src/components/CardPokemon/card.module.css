@@ -1,0 +1,18 @@
+.containerCard {
+    border: solid 8px;
+    border-radius: 100%;
+    width: 26rem;
+    height: 26rem;
+    background-color: rgb(0, 0, 0);
+    background-image: url("../../image/pokeball-.png");
+    background-size: 41.5rem;
+}
+
+
+.nameCard {
+    font-family: "Segoe Print";
+    color: rgb(255, 255, 255);
+    box-shadow: none;
+    text-decoration: none;
+    font-weight: bold;
+}
