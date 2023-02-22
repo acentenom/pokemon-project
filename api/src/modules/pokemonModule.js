@@ -42,10 +42,23 @@ const getPokemonsByIdModule = async (id) => {
   try {
     if(id.includes("-")) {
       let pokemonIdFromDB = await pokemonByIdFromDB(id)
-      return pokemonIdFromDB
+      let pokeFromDB = [pokemonIdFromDB].map(d => {
+        return {
+          id: d.id,
+          name: d.name,
+          image: d.image,
+          attack: d.attack,
+          defense: d.defense,
+          speed: d.speed,
+          height: d.height,
+          weight: d.weight,
+          type: d.types.map(t => t.name)
+        }
+      })
+      return pokeFromDB
     }
     let pokemonById = await getPokemonsByIdService(id);
-    return {
+    return [{
       id: pokemonById.id,
       name: pokemonById.name.charAt(0).toUpperCase() + pokemonById.name.slice(1),
       image: pokemonById.sprites.other.dream_world.front_default,
@@ -55,7 +68,7 @@ const getPokemonsByIdModule = async (id) => {
       height: pokemonById?.height,
       weight: pokemonById?.weight,
       type: pokemonById?.types.map((t) => t.type.name),
-    };
+    }];
   } catch (error) {
     throw error;
   }
