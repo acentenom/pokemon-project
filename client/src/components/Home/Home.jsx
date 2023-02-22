@@ -37,11 +37,13 @@ const Home = () => {
           return (
             <div key={p.id}>
               <div>
+                <Link to={`/detail/${p.id}`}>
                 <CardPokemon
                   name={p.name}
                   image={p.image}
                   type={p.type}
                 />
+                </Link>
               </div>
             </div>
           );
