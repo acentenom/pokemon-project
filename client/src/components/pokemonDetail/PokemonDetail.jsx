@@ -12,7 +12,6 @@ const PokemonDetail = () => {
   }, [dispatch, id]);
 
   let detail = useSelector((state) => state.pokemonDetail);
-  console.log("detail :>> ", detail);
 
   return (
     <div>
