@@ -6,11 +6,14 @@ import CardPokemon from "../CardPokemon/CardPokemon";
 import style from "../Home/home.module.css";
 import Paginated from "../Paginated/Paginated";
 import Navbar from "../Navbar/Navbar";
-import FiltersByOrigin from "../Filters/Filters";
+import { FiltersByOrigin } from "../Filters/Filters";
+import { sortByAttack } from "../../redux/action/index"
 
 const Home = () => {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
+
+  const [/* reload */, setReload ] = useState(false)
 
   /* Paginado */
 
@@ -28,10 +31,24 @@ const Home = () => {
     dispatch(getPokemons());
   }, [dispatch]);
 
+  const handleSortAttack = (event) => {
+    event.preventDefault();
+    dispatch(sortByAttack(event.target.value));
+    setReload((prevState) => !prevState);
+  }
+
   return (
     <div className={style.fondo}>
       <Navbar />
       <FiltersByOrigin />
+      <div>
+      <label>Attack</label>
+      <select onChange={handleSortAttack}>
+        <option>Escoge</option>
+        <option value="weak">Débil</option>
+        <option value="powerful">Fuerte</option>
+      </select>
+    </div>
       <Link to="/create-pokemon">Create Pokemon</Link>
       <div className={style.containerCard}>
         {pokePagina.map(p => {

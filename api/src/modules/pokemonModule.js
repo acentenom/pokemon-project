@@ -24,6 +24,7 @@ const getPokemonModule = async () => {
       const types = p.types.map((t) => t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1));
       return {
         id: p.id,
+        attack: p.stats[1].base_stat,
         name: p.name.charAt(0).toUpperCase() + p.name.slice(1),
         image: p.sprites.other.dream_world.front_default,
         type: types,
