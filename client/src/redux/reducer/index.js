@@ -1,4 +1,4 @@
-import { GET_ALL_POKEMONS, GET_DETAIL, GET_SEARCH, POST_CREATE_POKEMON, GET_TYPES, FILTER_FOR_ORIGIN } from "../action/index";
+import { GET_ALL_POKEMONS, GET_DETAIL, GET_SEARCH, POST_CREATE_POKEMON, GET_TYPES, FILTER_FOR_ORIGIN, SORT_ATTACK } from "../action/index";
 
 const initialState = {
   pokemons: [],
@@ -43,7 +43,25 @@ const pokemonReducer = (state = initialState, action) => {
           return {
             ...state,
             pokemons: filterForOrigin
-          }
+          };
+          case SORT_ATTACK:
+            const pokemonSortAttack = state.allPokemons;
+            let sortAttack = pokemonSortAttack.sort((a,b) => {
+              if(action.payload === "weak") {
+                if (a.attack < b.attack) return -1;
+                if (a.attack > b.attack) return 1;
+                return 0;
+              } else {
+                if (a.attack < b.attack) return 1;
+                if (a.attack > b.attack) return -1;
+                return 0;
+              }
+            })
+            console.log(sortAttack);
+            return {
+              ...state,
+              pokemons: sortAttack
+            }
     default:
       return state;
   }
