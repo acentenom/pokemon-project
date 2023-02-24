@@ -1,8 +1,9 @@
-import { GET_ALL_POKEMONS, GET_DETAIL, GET_SEARCH } from "../action/index";
+import { GET_ALL_POKEMONS, GET_DETAIL, GET_SEARCH, POST_CREATE_POKEMON, GET_TYPES } from "../action/index";
 
 const initialState = {
   pokemons: [],
   pokemonDetail: [],
+  types: [],
 };
 
 const pokemonReducer = (state = initialState, action) => {
@@ -22,6 +23,15 @@ const pokemonReducer = (state = initialState, action) => {
         ...state,
         pokemonDetail: action.payload,
       };
+      case POST_CREATE_POKEMON:
+        return {
+          ...state,
+        };
+        case GET_TYPES:
+          return {
+            ...state,
+            types: action.payload,
+          }
     default:
       return state;
   }
