@@ -6,6 +6,7 @@ export const GET_DETAIL = "GET_DETAIL";
 export const POST_CREATE_POKEMON = "POST_CREATE_POKEMON";
 export const GET_TYPES = "GET_TYPES";
 export const FILTER_FOR_ORIGIN = "FILTER_FOR_ORIGIN";
+export const SORT_ATTACK = "SORT_ATTACK";
 
 export const getPokemons = () => {
   return async function (dispatch) {
@@ -66,3 +67,10 @@ export const fitlerForOrigin = (payload) => {
     payload
   };
 };
+
+export const sortByAttack = (payload) => {
+  return {
+    type: SORT_ATTACK,
+    payload
+  }
+}
