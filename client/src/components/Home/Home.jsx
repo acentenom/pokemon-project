@@ -5,7 +5,8 @@ import { getPokemons } from "../../redux/action";
 import CardPokemon from "../CardPokemon/CardPokemon";
 import style from "../Home/home.module.css";
 import Paginated from "../Paginated/Paginated";
-import Navbar from "../Navbar/Navbar"
+import Navbar from "../Navbar/Navbar";
+import FiltersByOrigin from "../Filters/Filters";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Home = () => {
   return (
     <div className={style.fondo}>
       <Navbar />
+      <FiltersByOrigin />
       <Link to="/create-pokemon">Create Pokemon</Link>
       <div className={style.containerCard}>
         {pokePagina.map(p => {
