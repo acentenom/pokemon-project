@@ -2,7 +2,9 @@ import axios from "axios";
 
 export const GET_ALL_POKEMONS = "GET_ALL_POKEMONS";
 export const GET_SEARCH = "GET_SEARCH";
-export const GET_DETAIL = "GET_DETAIL"
+export const GET_DETAIL = "GET_DETAIL";
+export const POST_CREATE_POKEMON = "POST_CREATE_POKEMON";
+export const GET_TYPES = "GET_TYPES";
 
 export const getPokemons = () => {
   return async function (dispatch) {
@@ -10,7 +12,6 @@ export const getPokemons = () => {
       const pokemon = await axios.get(
         "http://localhost:3001/pokemons"
       );
-      console.log('pokemon :>> ');
       return dispatch({ type: GET_ALL_POKEMONS, payload: pokemon.data });
     } catch (error) {
       throw error;
@@ -33,10 +34,27 @@ export const getPokemonDetail = (id) => {
   return async function (dispatch) {
     try {
       const detail = await axios.get(`http://localhost:3001/pokemons/${id}`);
-      console.log('detail.data :>> ', detail.data);
       return dispatch({ type: GET_DETAIL, payload: detail.data });
     } catch (error) {
       throw error;
     }
+  }
+};
+
+export const createPokemon = (body) => {
+  return async function () {
+    try {
+      const create = await axios.post(`http://localhost:3001/pokemons`, body);
+      return create;
+    } catch (error) {
+      throw error;
+    }
+  }
+};
+
+export const getTypes = () => {
+  return async function (dispatch) {
+    const types = await axios.get(`http://localhost:3001/types`)
+    return dispatch({ type: GET_TYPES, payload: types.data })
   }
 }

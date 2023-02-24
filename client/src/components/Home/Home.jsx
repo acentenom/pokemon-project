@@ -18,7 +18,6 @@ const Home = () => {
 
   const ultimoPoke = paginado * porPagina;
   const primerPoke = ultimoPoke - porPagina;
-  console.log('allPokemons :>> ', allPokemons);
   const pokePagina = allPokemons.slice(primerPoke, ultimoPoke);
   const paginadoDePokemon = (pagenumber) => {
     setPaginado(pagenumber);
@@ -31,7 +30,7 @@ const Home = () => {
   return (
     <div className={style.fondo}>
       <Navbar />
-      <Link to="/pokemon">Create Pokemon</Link>
+      <Link to="/create-pokemon">Create Pokemon</Link>
       <div className={style.containerCard}>
         {pokePagina.map(p => {
           return (
