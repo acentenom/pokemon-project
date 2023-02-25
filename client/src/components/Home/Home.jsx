@@ -6,7 +6,7 @@ import CardPokemon from "../CardPokemon/CardPokemon";
 import style from "../Home/home.module.css";
 import Paginated from "../Paginated/Paginated";
 import Navbar from "../Navbar/Navbar";
-import { FiltersByOrigin } from "../Filters/Filters";
+import { FiltersByOrigin, FilterPokeByType } from "../Filters/Filters";
 import { sortByAttack } from "../../redux/action/index"
 
 const Home = () => {
@@ -47,6 +47,7 @@ const Home = () => {
     <div className={style.fondo}>
       <Navbar />
       <FiltersByOrigin />
+      <FilterPokeByType />
       <div>
       <label>Ataque</label>
       <select onChange={handleSortAttack}>
