@@ -1,4 +1,4 @@
-import { GET_ALL_POKEMONS, GET_DETAIL, GET_SEARCH, POST_CREATE_POKEMON, GET_TYPES, FILTER_FOR_ORIGIN, SORT_ATTACK } from "../action/index";
+import { GET_ALL_POKEMONS, GET_DETAIL, GET_SEARCH, POST_CREATE_POKEMON, GET_TYPES, FILTER_FOR_ORIGIN, SORT_ATTACK, SORT_ALPHABETICAL } from "../action/index";
 
 const initialState = {
   pokemons: [],
@@ -57,11 +57,27 @@ const pokemonReducer = (state = initialState, action) => {
                 return 0;
               }
             })
-            console.log(sortAttack);
             return {
               ...state,
               pokemons: sortAttack
-            }
+            };
+            case SORT_ALPHABETICAL:
+              const pokemonAll = state.pokemons;
+              const sortAlphabetical = pokemonAll.sort((a,b) => {
+                if(action.payload === "A to Z") {
+                  if (a.name < b.name) return -1;
+                  if (a.name > b.name) return 1;
+                  return 0;
+                } else {
+                  if (a.name < b.name) return 1;
+                  if (a.name > b.name) return -1;
+                  return 0;
+                }
+              })
+              return {
+                ...state,
+                pokemons: sortAlphabetical
+              }
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { getPokemons } from "../../redux/action";
+import { getPokemons, sortAlphabetical } from "../../redux/action";
 import CardPokemon from "../CardPokemon/CardPokemon";
 import style from "../Home/home.module.css";
 import Paginated from "../Paginated/Paginated";
@@ -37,16 +37,30 @@ const Home = () => {
     setReload((prevState) => !prevState);
   }
 
+  const handleSortAlphabetical = (event) => {
+    event.preventDefault();
+    dispatch(sortAlphabetical(event.target.value));
+    setReload((prevState) => !prevState);
+  }
+
   return (
     <div className={style.fondo}>
       <Navbar />
       <FiltersByOrigin />
       <div>
-      <label>Attack</label>
+      <label>Ataque</label>
       <select onChange={handleSortAttack}>
         <option>Escoge</option>
         <option value="weak">Débil</option>
         <option value="powerful">Fuerte</option>
+      </select>
+    </div>
+    <div>
+      <label>Orden Alfabetico</label>
+      <select onChange={handleSortAlphabetical}>
+        <option>Escoge</option>
+        <option value="A to Z">A - Z</option>
+        <option value="Z to A">Z - A</option>
       </select>
     </div>
       <Link to="/create-pokemon">Create Pokemon</Link>
