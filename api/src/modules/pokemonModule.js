@@ -15,6 +15,7 @@ const getPokemonModule = async () => {
     let poke = pokemonsDB.map(el => {
       return {
         id: el.id,
+        attack: el.attack,
         name: el.name.charAt(0).toUpperCase() + el.name.slice(1),
         image: el.image,
         type: el.types.map(t => t.name.charAt(0).toUpperCase() + t.name.slice(1))
