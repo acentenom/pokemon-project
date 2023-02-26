@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
 import { getPokemonDetail } from "../../redux/action";
+import Navbar from "../Navbar/Navbar"
 
 const PokemonDetail = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const PokemonDetail = () => {
 
   return (
     <div>
+      <Navbar />
       <div>
         <Link to="/home">Home</Link>
       </div>
