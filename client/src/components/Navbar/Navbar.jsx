@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getSearchPokemon } from "../../redux/action";
 import { Link } from "react-router-dom"
+import pokemon from "../../image/pokemon.png"
 import style from "../Navbar/navbar.module.css"
 
 const Navbar = () => {
@@ -22,7 +23,9 @@ const Navbar = () => {
     <>
     <div onClick={e => handleSubmit(e)} className={style.barra}>
     <div>
-        <Link className={style.homeBar} to="/home">Home</Link>
+        <Link className={style.homeBar} to="/home">
+          <img className={style.goHome} src={pokemon} alt=""  />
+        </Link>
       </div>
        <input
           className={style.buscador}

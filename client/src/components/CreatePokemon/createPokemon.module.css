@@ -1,0 +1,72 @@
+.fondo {
+    width: 100vw;
+    height: 100vh;
+}
+
+.titulo {
+    width: 800px;
+    height: 100px;
+    margin: 50px;
+}
+
+.formulario {
+    display: flex;
+    justify-content: center;
+    border: solid 4px;
+    border-radius: 20px;
+    width: 400px;
+    position: relative;
+    left: 700px;
+    background-color: tomato;
+    padding: 40px;
+}
+
+.inputs {
+    margin: 4px;
+    border: solid 2px;
+    border-radius: 6px;
+    width: 150px;
+}
+
+.inputsNum {
+    margin: 4px;
+    border: solid 2px;
+    border-radius: 6px;
+    width: 40px;
+}
+
+.warning {
+    color:lavender;
+    font-family: fantasy;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin: 5px;
+}
+
+.etiquetas {
+    font-weight: bolder;
+    margin: 4px;
+    font-size: 18px;
+}
+
+.tipos {
+    border: solid 2px;
+    border-radius: 4px;
+    width: 80px;
+    margin-top: 5px;
+}
+
+.mostrarTipos {
+    list-style: none;
+    border: solid 2px;
+    border-radius: 6px;
+    background-color: whitesmoke;
+    font-size: 18px;
+}
+
+.boton {
+    font-size: 20px;
+    width: 6rem;
+    border-radius: 4px;
+    border: black solid 2px
+}

@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getTypes } from "../../redux/action";
-import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import style from "../CreatePokemon/createPokemon.module.css"
+import create from "../../image/crea-pokemon.png"
 
 const validate = (input) => {
   let errors = {};
@@ -16,28 +17,28 @@ const validate = (input) => {
   }
   if (!input.attack) {
     errors.attack = "Ataque requerido.";
-  } else if (!/^[0-9]{1,2}$/.test(input.height)) {
-    errors.attack = "Debe ser un valor entre el 0 - 100";
+  } else if (!/^[0-9]{1,2}$/.test(input.attack)) {
+    errors.attack = "Debe ser un valor entre el 0 - 99";
   }
   if (!input.defense) {
     errors.defense = "Defensa Requerida.";
-  } else if (!/^[0-9]{1,2}$/.test(input.height)) {
-    errors.defense = "Debe ser un valor entre el 0 - 100";
+  } else if (!/^[0-9]{1,2}$/.test(input.defense)) {
+    errors.defense = "Debe ser un valor entre el 0 - 99";
   }
   if (!input.speed) {
     errors.speed = "Velocidad requerida.";
-  } else if (!/^[0-9]{1,2}$/.test(input.height)) {
-    errors.speed = "Debe ser un valor entre el 0 - 100";
+  } else if (!/^[0-9]{1,2}$/.test(input.speed)) {
+    errors.speed = "Debe ser un valor entre el 0 - 99";
   }
   if (!input.height) {
     errors.height = "Altura requerida.";
   } else if (!/^[0-9]{1,2}$/.test(input.height)) {
-    errors.height = "Debe ser un valor entre el 0 - 100";
+    errors.height = "Debe ser un valor entre el 0 - 99";
   }
   if (!input.weight) {
     errors.weight = "Peso requerido.";
-  } else if (!/^[0-9]{1,2}$/.test(input.height)) {
-    errors.weight = "Debe ser un valor entre el 0 - 100";
+  } else if (!/^[0-9]{1,2}$/.test(input.weight)) {
+    errors.weight = "Debe ser un valor entre el 0 - 99";
   }
   if (!input.types) {
     errors.types = "Debe tener al menos un tipo.";
@@ -85,13 +86,17 @@ const CreatePokemon = () => {
   const handleBoton = (e) => {
     let aux = null;
     if (correct.includes(e.target.value)) {
+      console.log(correct.filter((f) => f !== f?.target?.value));
       aux = correct.filter((f) => f !== f?.target?.value);
+      console.log("primero---->", aux);
       setCorrect(aux);
     } else {
+      console.log("object---->", aux);
       aux = correct.concat(e.target.value);
       setCorrect(aux);
     }
-    if (aux.length >= 16) {
+    console.log(aux);
+    if (aux.length > 16) {
       setBoton(true);
     } else {
       setBoton(false);
@@ -114,104 +119,116 @@ const CreatePokemon = () => {
   };
 
   return (
-    <>
+    <div className={style.fondo}>
     <Navbar />
-      <div>
-        <Link to="/home">Home</Link>
-      </div>
-      <div>
+    <img className={style.titulo} src={create} alt="" />
+      <div className={style.formulario}>
         <form onSubmit={handleSubmit}>
           <div onChange={handleBoton}>
-            <label>Name:</label>
+            <label className={style.etiquetas}>Nombre</label>
             <input
+              className={style.inputs}
+              placeholder="Pikachu"
               type={"text"}
               value={form.name}
               onChange={handleForm}
               name={"name"}
             />
-            {error.name && <p>{error.name}</p>}
+            {error.name && <p className={style.warning} >{error.name}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label>Image:</label>
+            <label className={style.etiquetas}  >Imagen</label>
             <input
+            className={style.inputs}
+            placeholder="http://...png"
               type={"text"}
               value={form.image}
               onChange={handleForm}
               name={"image"}
             />
-            {error.image && <p>{error.image}</p>}
+            {error.image && <p className={style.warning} >{error.image}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label>Attack:</label>
+            <label className={style.etiquetas}>Ataque</label>
             <input
+            placeholder="21"
+            className={style.inputsNum}
               type={"number"}
               value={form.attack}
               onChange={handleForm}
               name={"attack"}
             />
-            {error.attack && <p>{error.attack}</p>}
+            {error.attack  && <p className={style.warning} >{error.attack}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label>Defense:</label>
+            <label className={style.etiquetas}  >Defensa</label>
             <input
+            placeholder="21"
+            className={style.inputsNum}
               type={"number"}
               value={form.defense}
               onChange={handleForm}
               name={"defense"}
             />
-            {error.defense && <p>{error.defense}</p>}
+            {error.defense && <p className={style.warning} >{error.defense}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label>Speed:</label>
+            <label className={style.etiquetas}  >Velocidad</label>
             <input
+            placeholder="21"
+            className={style.inputsNum}
               type={"number"}
               value={form.speed}
               onChange={handleForm}
               name={"speed"}
             />
-            {error.speed && <p>{error.speed}</p>}
+            {error.speed && <p className={style.warning} >{error.speed}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label>Height:</label>
+            <label className={style.etiquetas}  >Altura</label>
             <input
+            placeholder="21"
+            className={style.inputsNum}
               type={"number"}
               value={form.height}
               onChange={handleForm}
               name={"height"}
             />
-            {error.height && <p>{error.height}</p>}
+            {error.height && <p className={style.warning} >{error.height}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label>Weight:</label>
+            <label className={style.etiquetas} >Peso</label>
             <input
+            placeholder="21"
+            className={style.inputsNum}
               type={"number"}
               value={form.weight}
               onChange={handleForm}
               name={"weight"}
             />
-            {error.weight && <p>{error.weight}</p>}
+            {error.weight && <p className={style.warning} >{error.weight}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label>Type:</label>
-            <select onChange={handleSelect}>
+            <label className={style.etiquetas} >Type</label>
+            <select className={style.tipos} onChange={handleSelect}>
               {types?.map((t, index) => (
-                <option key={index} value={t.name}>
+                <option  key={index} value={t.name}>
                   {t.name}
                 </option>
               ))}
             </select>
             <ul>
-              <li>{form.types.map((element) => element + ", ")}</li>
+              <li className={style.mostrarTipos} >{form.types.map((element) => element + " ")}</li>
             </ul>
           </div>
           <div>
-            <button disabled={!boton} type="submit">
+            <button className={style.boton} disabled={!boton} type="submit">
               Crear
             </button>
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
