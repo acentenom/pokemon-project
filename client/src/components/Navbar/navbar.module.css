@@ -1,5 +1,5 @@
 .barra {
-    background-color: brown;
+    background-color: tomato;
     padding: 12px;
     display: flex;
     justify-content: flex-end;
@@ -8,16 +8,29 @@
 .buscador {
     font-size: 18px;
     border-radius: 5px;
+    border: solid black 2px;
 }
 
 .boton {
     font-size: 18px;
     margin-left: 5px;
     border-radius: 5px;
+    color: white;
+    background-color: silver;
+    border: solid black 2px;
+}
+
+.boton:hover {
+    background-color: yellow;
+    border: solid rgb(55, 55, 243) 2px;
+    width: 80px;
 }
 
 .homeBar {
     position: relative;
-    right: 1440px;
-    font-size: 18px;
+    right: 1420px;
+}
+
+.goHome {
+    width: 120px;
 }
