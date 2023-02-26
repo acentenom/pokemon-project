@@ -1,0 +1,28 @@
+.pokedex {
+    margin-bottom: 50px;
+    width: 1170px;
+}
+
+.nombre {
+    position: absolute;
+    top: 345px;
+    left: 660px;
+    color:white;
+    font-weight: bold;
+}
+
+.pokemon {
+    position: absolute;
+    top: 460px;
+    left: 670px;
+    width: 125px;
+}
+
+.caracteristicas {
+    color: white;
+    position: absolute;
+    top: 380px;
+    left: 1000px;
+    padding: 82px;
+    background-color: rgb(240, 73, 73);
+}

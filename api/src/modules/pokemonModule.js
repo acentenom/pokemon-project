@@ -67,8 +67,8 @@ const getPokemonsByIdModule = async (id) => {
       attack: pokemonById.stats[1].base_stat,
       defense: pokemonById.stats[2].base_stat,
       speed: pokemonById?.stats[5].base_stat,
-      height: pokemonById?.height,
-      weight: pokemonById?.weight,
+      height: (pokemonById?.height*0.1).toFixed(2),
+      weight: (pokemonById?.weight*0.1).toFixed(2),
       type: pokemonById?.types.map((t) => t.type.name),
     }];
   } catch (error) {
