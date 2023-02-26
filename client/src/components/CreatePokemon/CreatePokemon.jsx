@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getTypes } from "../../redux/action";
 import { Link } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 
 const validate = (input) => {
   let errors = {};
@@ -114,6 +115,7 @@ const CreatePokemon = () => {
 
   return (
     <>
+    <Navbar />
       <div>
         <Link to="/home">Home</Link>
       </div>
