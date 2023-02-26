@@ -1,5 +1,5 @@
 .barra {
-    background-color: tomato;
+    background-color: rgb(240, 73, 73);
     padding: 12px;
     display: flex;
     justify-content: flex-end;
@@ -32,5 +32,5 @@
 }
 
 .goHome {
-    width: 120px;
+    width: 100px;
 }
