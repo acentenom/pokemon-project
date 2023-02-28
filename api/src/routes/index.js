@@ -4,7 +4,8 @@ const { Router } = require('express');
 const { getPokemonController, getPokemonsByIdController } = require('../controllers/pokemonControllers');
 const savePokemonController = require('../controllers/savePokemonController');
 const getTypesPokemonController = require('../controllers/typesPokemonControllers');
-const { searchByNameController } = require('../controllers/searchByNameController')
+const { searchByNameController } = require('../controllers/searchByNameController');
+const deletePokemonController = require('../controllers/deletePokemonController');
 
 
 const router = Router();
@@ -18,6 +19,7 @@ router.get('/pokemons/name', searchByNameController);
 router.get('/pokemons/:id', getPokemonsByIdController);
 router.post('/pokemons', savePokemonController);
 router.get('/types', getTypesPokemonController);
+router.delete('/pokemons/:id', deletePokemonController);
 
 
 module.exports = router;
