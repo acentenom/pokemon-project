@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 //Guarda pokemon en la base de datos
 
-const savePokemonService = async (body) => {
+const savePokemonHandler = async (body) => {
   try {
     const savePokemon = await Pokemon.create(body);
     const findType = await Type.findAll({
@@ -77,7 +77,7 @@ const searchByNameFromDB = async (name) => {
 };
 
 module.exports = {
-  savePokemonService,
+  savePokemonHandler,
   getPokemonFromDB,
   pokemonByIdFromDB,
   searchByNameFromDB

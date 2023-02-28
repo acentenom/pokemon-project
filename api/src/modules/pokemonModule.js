@@ -4,7 +4,7 @@ const {
   getPokemonsByIdService,
   searchByNameServer
 } = require("../services/pokemonService");
-const { savePokemonService, getPokemonFromDB, pokemonByIdFromDB, searchByNameFromDB } = require('../handlers/pokemonHandler')
+const { savePokemonHandler, getPokemonFromDB, pokemonByIdFromDB, searchByNameFromDB } = require('../handlers/pokemonHandler')
 
 //Traigo todos los pokemons para la home
 
@@ -83,7 +83,7 @@ const savePokemonModule = async (body) => {
     if(![".png", ".jpg", "jpeg"].includes(body.image)) {
      body.image = "https://img-01.stickers.cloud/packs/069c8949-1a43-4f37-9cc3-e65558eb32b0/webp/9165882a-650a-446d-a674-898a336c4c98.webp";
     }
-    const savePokemon = await savePokemonService(body);
+    const savePokemon = await savePokemonHandler(body);
     return savePokemon;
   } catch (error) {
    throw error;
