@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getPokemonDetail } from "../../redux/action";
 import Navbar from "../Navbar/Navbar"
 import pokedex from "../../image/pokedex_.png"
 import style from "../pokemonDetail/detailPokemon.module.css"
+import  pokeball  from "../../image/pokeball.gif"
 
 const PokemonDetail = () => {
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const PokemonDetail = () => {
       <img className={style.pokedex} src={pokedex} alt="" />
 
       <div>
-        {detail.length > 0 ? (
+        {detail.length === 1 ? (
           <div>
             <h1 className={style.nombre}>{detail[0].name}</h1>
             <img className={style.pokemon} src={detail[0].image} alt={detail[0].name} />
@@ -36,7 +37,7 @@ const PokemonDetail = () => {
             </div>
           </div>
         ) : (
-          <h1>loading</h1>
+          <img src= {pokeball} alt="cargar" />
         )}
       </div>
 

@@ -13,8 +13,8 @@
 
 .pokemon {
     position: absolute;
-    top: 460px;
-    left: 670px;
+    top: 440px;
+    left: 650px;
     width: 125px;
 }
 
@@ -22,7 +22,7 @@
     color: white;
     position: absolute;
     top: 380px;
-    left: 1000px;
-    padding: 82px;
+    left: 1005px;
+    padding: 84px;
     background-color: rgb(240, 73, 73);
 }

@@ -6,7 +6,7 @@ const CardPokemon = ({ name, image, type }) => {
     <div className={style.containerCard}>
       <h2 className={style.nameCard}>{name}</h2>
       <img className={style.imagePokemon} src={image} alt="img no found" width="350px" height="260px" />
-      <h4>{type.join(" - ")}</h4>
+      <h4 className={style.tipos}>{type.join(" - ")}</h4>
     </div>
   );
 };

@@ -7,7 +7,7 @@ const getTypesPokemonModule = async () => {
     const typesPokemon = await getTypesPokemonService();
     const formTypesPokemon = typesPokemon.map(t => {
       return {
-        name: t.name
+        name: t.name.charAt(0).toUpperCase() + t.name.slice(1)
       }
     });
     await saveTypesPokemon(formTypesPokemon)
