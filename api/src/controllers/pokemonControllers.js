@@ -6,8 +6,8 @@ const {
 
 const getPokemonController = async (req, res) => {
   try {
-    const pokemon = await getPokemonModule();
-    res.status(200).send(pokemon);
+    const pokemons = await getPokemonModule();
+    res.status(200).send(pokemons);
   } catch (error) {
     res.status(400).send({ "error": error.message });
   }
@@ -23,17 +23,7 @@ const getPokemonsByIdController = async (req, res) => {
   }
 };
 
-const searchByNameServer = async (name) => {
-  try {
-    const { data: searchByName } = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`)
-    return searchByName;
-  } catch (error) {
-    throw error;
-  }
-};
-
 module.exports = {
   getPokemonController,
-  getPokemonsByIdController,
-  searchByNameServer
+  getPokemonsByIdController
 };
