@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons, fitlerForOrigin, getTypes, filterByType } from "../../redux/action";
+import style from "../Filters/filtro.module.css"
 
 /* Filtar pokemons por origen: Api o Base de datos */
 
@@ -16,10 +17,10 @@ export const FiltersByOrigin = () => {
   };
 
   return (
-    <div>
-      <label>API o Base de Dato</label>
-      <select onChange={handleOrigen}>
-        <option value="All">API o Base de Datos</option>
+    <div className={style.filtroOrigen}>
+      <label className={style.nombre}>API o Base de Dato</label>
+      <select className={style.input} onChange={handleOrigen}>
+        <option value="All">Todos</option>
         <option value="Data Base">Base de Datos</option>
         <option value="API">API</option>
       </select>
@@ -41,9 +42,9 @@ export const FilterPokeByType = () => {
   }
 
   return (
-    <div>
-      <label>Tipos</label>
-      <select onChange={e => handletypeFilter(e)}>
+    <div className={style.filtroOrigen}>
+      <label className={style.nombre}>Tipos</label>
+      <select className={style.input} onChange={e => handletypeFilter(e)}>
         <option value="All">Todos</option>
           {
             allTypes.map((t,index) => (

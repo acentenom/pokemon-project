@@ -1,20 +1,122 @@
+.fondo {
+    background-color: #282c34;
+    width: 99vw;
+      height: 68vw;
+}
+
+.titulo {
+    margin: 40px;
+    margin-bottom: 20px;
+}
 
 .containerCard {
-    display: grid;
-    grid-template-columns: repeat(4, 50fr);
-    grid-gap: 60px;
-    justify-items: center;
+ /*    display: grid;
+    grid-template-columns: repeat(4, 100fr);
+    grid-gap: -20px;
+    grid-row-gap: 40px;
+    justify-items: center; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 
+
+
 .cardDisign {
+
     background: rgba(169, 159, 140, 0.807);
     border-radius: 60% 10% / 10% 40%;
     width: 380px;
     height: 90%;
-    border: 8px solid rgb(13, 8, 4);
-    margin: none;
     padding: 10px;
     font-size: 25px;
     text-align: center;
+    text-decoration: none;
+
+}
+
+.linkDetail {
+    text-decoration: none;
+}
+
+.createPoke {
+    font-size: 20px;
+    border: solid 3px;
+    border-radius: 6px;
+    background-color: rgb(234, 234, 234);
+    width: max-content;
+    padding: 4px;
+    margin: 40px;
+    position: relative;
+    left: 840px;
+}
+
+.botonCrear {
+    text-decoration: none;
+    color: black;
+    width: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.botonCrear:hover {
+    color:  rgb(46, 46, 206);
+}
+.createPoke:hover {
+    background-color: yellow;
+    border: solid rgb(46, 46, 206) 2px;
+    color:  rgb(46, 46, 206);
+}
+
+.filtrosOrden {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.ataqueOrden {
+    display: flex;
+    justify-content: flex-start;
+    margin: 40px;
+    font-size: 18px;
+    color: azure;
+    width: max-content;
+}
+
+.ordenAlfabetico {
+    display: flex;
+    justify-content: flex-start;
+    margin: 40px;
+    font-size: 18px;
+    color: azure;
+    width: max-content;
+}
+
+.input {
+    border-radius: 6px;
+    font-size: 12px;
+    text-align: center;
+    width: max-content;
+}
+
+.etiqueta {
+    margin: 8px;
+}
+
+.recargar {
+    font-size: 20px;
+    border: solid 3px;
+    border-radius: 6px;
+    background-color: rgb(234, 234, 234);
+    width: max-content;
+
+    margin: 20px;
+}
+
+.recargar:hover {
+    background-color: yellow;
+    border: solid rgb(46, 46, 206) 2px;
+    color:  rgb(46, 46, 206);
 }

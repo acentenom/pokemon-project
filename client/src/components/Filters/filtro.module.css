@@ -1,0 +1,25 @@
+.filtroOrigen {
+    display: flex;
+    justify-content: flex-start;
+    margin: 40px;
+    font-size: 18px;
+    color: azure;
+    width: max-content;
+}
+
+/* .filtroNombre {
+    display: flex;
+    justify-content: center;
+    
+} */
+
+.nombre {
+    margin: 6px;
+}
+
+.input {
+    border-radius: 6px;
+    font-size: 12px;
+    text-align: center;
+    width: max-content;
+}
