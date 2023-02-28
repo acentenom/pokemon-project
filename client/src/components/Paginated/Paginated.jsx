@@ -1,4 +1,5 @@
 import React from "react";
+import style from "../Paginated/paginado.module.css"
 
 const Paginated = ({ porPagina, paginadoDePokemon, allPokemons }) => {
   const pageNumbers = [];
@@ -8,11 +9,11 @@ const Paginated = ({ porPagina, paginadoDePokemon, allPokemons }) => {
   }
   return (
     <nav>
-      <ul>
+      <ul className={style.paginado}>
         {pageNumbers &&
           pageNumbers.map((num) => (
-            <li key={num}>
-              <button key={num} onClick={() => paginadoDePokemon(num)}>{num}</button>
+            <li className={style.formatColumn} key={num}>
+              <button className={style.button} key={num} onClick={() => paginadoDePokemon(num)}>{num}</button>
             </li>
           ))}
       </ul>

@@ -54,7 +54,7 @@ const getPokemonsByIdModule = async (id) => {
           speed: d.speed,
           height: d.height,
           weight: d.weight,
-          type: d.types.map(t => t.name)
+          type: d.types.map(t => t.name.charAt(0).toUpperCase() + t.name.slice(1))
         }
       })
       return pokeFromDB
@@ -69,7 +69,7 @@ const getPokemonsByIdModule = async (id) => {
       speed: pokemonById?.stats[5].base_stat,
       height: (pokemonById?.height*0.1).toFixed(2),
       weight: (pokemonById?.weight*0.1).toFixed(2),
-      type: pokemonById?.types.map((t) => t.type.name),
+      type: pokemonById?.types.map((t) => t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1)),
     }];
   } catch (error) {
     throw error;
@@ -80,6 +80,9 @@ const getPokemonsByIdModule = async (id) => {
 
 const savePokemonModule = async (body) => {
   try {
+    if(![".png", ".jpg", "jpeg"].includes(body.image)) {
+     body.image = "https://img-01.stickers.cloud/packs/069c8949-1a43-4f37-9cc3-e65558eb32b0/webp/9165882a-650a-446d-a674-898a336c4c98.webp";
+    }
     const savePokemon = await savePokemonService(body);
     return savePokemon;
   } catch (error) {
@@ -97,7 +100,7 @@ const searchByNameModule = async (name) => {
         id: d.id,
         name: d.name.charAt(0).toUpperCase() + d.name.slice(1),
         image: d.image,
-        type: d.types.map(t => t.name)
+        type: d.types.map(t => t.name.charAt(0).toUpperCase() + t.name.slice(1))
       }
      })
     }
@@ -106,7 +109,7 @@ const searchByNameModule = async (name) => {
       id: searchByName.id,
       name: searchByName.name.charAt(0).toUpperCase() + searchByName.name.slice(1),
       image: searchByName.sprites.other.dream_world.front_default,
-      type: searchByName?.types.map((t) => t.type.name)
+      type: searchByName?.types.map((t) => t.type.name.charAt(0).toUpperCase() + t.type.name.slice(1))
     }]
   } catch (error) {
     throw error;

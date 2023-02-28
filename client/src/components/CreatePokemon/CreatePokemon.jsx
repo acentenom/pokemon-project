@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getTypes } from "../../redux/action";
+import { Link } from "react-router-dom"
 import Navbar from "../Navbar/Navbar";
 import style from "../CreatePokemon/createPokemon.module.css"
 import create from "../../image/crea-pokemon.png"
@@ -119,8 +120,11 @@ const CreatePokemon = () => {
   };
 
   return (
-    <div className={style.fondo}>
+    <div  className={style.fondo}>
     <Navbar />
+    <Link  to="/home">
+    <button className={style.home} >Home</button>
+    </Link>
     <img className={style.titulo} src={create} alt="" />
       <div className={style.formulario}>
         <form onSubmit={handleSubmit}>

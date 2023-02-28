@@ -10,13 +10,14 @@ const Navbar = () => {
   const [name, setName] = useState();
 
   function handleInput(e) {
-    e.preventDefault()
+  e.preventDefault()
    setName(e.target.value)
 }
 
   function handleSubmit(e) {
     e.preventDefault()
     dispatch(getSearchPokemon(name))
+    setName()
   }
 
   return (
@@ -31,7 +32,7 @@ const Navbar = () => {
           className={style.buscador}
           type="text"
           placeholder="Pokemon..."
-          onChange={(e) => handleInput(e)}
+          onChange={handleInput}
           />
       <button className={style.boton} type="submit">Search</button>
     </div>
