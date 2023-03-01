@@ -1,4 +1,6 @@
-const deletePokemonHandler = require('../handlers/deletePokemonHandler')
+"use strict"
+
+const deletePokemonHandler = require("../handlers/deletePokemonHandler");
 
 const deletePokemonModule = async (id) => {
   try {

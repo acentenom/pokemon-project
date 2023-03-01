@@ -26,3 +26,21 @@
     padding: 84px;
     background-color: rgb(240, 73, 73);
 }
+
+.back {
+    position: absolute;
+    right: 1750px;
+    font-size: 20px;
+    border: solid 3px;
+    border-radius: 6px;
+    background-color: rgb(234, 234, 234);
+    width: max-content;
+    padding: 4px;
+    margin: 40px;
+}
+
+.back:hover {
+    background-color: yellow;
+    border: solid rgb(46, 46, 206) 2px;
+    color:  rgb(46, 46, 206);
+}

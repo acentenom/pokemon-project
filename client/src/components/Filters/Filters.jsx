@@ -1,7 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemons, fitlerForOrigin, getTypes, filterByType } from "../../redux/action";
-import style from "../Filters/filtro.module.css"
+import {
+  getPokemons,
+  fitlerForOrigin,
+  getTypes,
+  filterByType,
+} from "../../redux/action";
+import style from "../Filters/filtro.module.css";
 
 /* Filtar pokemons por origen: Api o Base de datos */
 
@@ -30,29 +35,28 @@ export const FiltersByOrigin = () => {
 
 export const FilterPokeByType = () => {
   const dispatch = useDispatch();
-  const allTypes = useSelector(state => state.types);
+  const allTypes = useSelector((state) => state.types);
 
   useEffect(() => {
-    dispatch(getTypes())
+    dispatch(getTypes());
   }, [dispatch]);
 
   const handletypeFilter = (event) => {
     event.preventDefault();
-    dispatch(filterByType(event.target.value))
-  }
+    dispatch(filterByType(event.target.value));
+  };
 
   return (
     <div className={style.filtroOrigen}>
       <label className={style.nombre}>Tipos</label>
-      <select className={style.input} onChange={e => handletypeFilter(e)}>
+      <select className={style.input} onChange={(e) => handletypeFilter(e)}>
         <option value="All">Todos</option>
-          {
-            allTypes.map((t,index) => (
-              <option value={t.name} key={index}>{t.name}</option>
-            ))
-          }
+        {allTypes.map((t, index) => (
+          <option value={t.name} key={index}>
+            {t.name}
+          </option>
+        ))}
       </select>
     </div>
-  )
-}
-
+  );
+};

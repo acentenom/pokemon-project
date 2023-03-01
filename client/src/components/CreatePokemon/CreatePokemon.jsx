@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createPokemon, getTypes } from "../../redux/action";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
-import style from "../CreatePokemon/createPokemon.module.css"
-import create from "../../image/crea-pokemon.png"
+import style from "../CreatePokemon/createPokemon.module.css";
+import create from "../../image/crea-pokemon.png";
 
 const validate = (input) => {
   let errors = {};
@@ -120,12 +120,12 @@ const CreatePokemon = () => {
   };
 
   return (
-    <div  className={style.fondo}>
-    <Navbar />
-    <Link  to="/home">
-    <button className={style.home} >Home</button>
-    </Link>
-    <img className={style.titulo} src={create} alt="" />
+    <div className={style.fondo}>
+      <Navbar />
+      <Link to="/home">
+        <button className={style.home}>Volver</button>
+      </Link>
+      <img className={style.titulo} src={create} alt="" />
       <div className={style.formulario}>
         <form onSubmit={handleSubmit}>
           <div onChange={handleBoton}>
@@ -138,91 +138,93 @@ const CreatePokemon = () => {
               onChange={handleForm}
               name={"name"}
             />
-            {error.name && <p className={style.warning} >{error.name}</p>}
+            {error.name && <p className={style.warning}>{error.name}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label className={style.etiquetas}  >Imagen</label>
+            <label className={style.etiquetas}>Imagen</label>
             <input
-            className={style.inputs}
-            placeholder="http://...png"
+              className={style.inputs}
+              placeholder="http://...png"
               type={"text"}
               value={form.image}
               onChange={handleForm}
               name={"image"}
             />
-            {error.image && <p className={style.warning} >{error.image}</p>}
+            {error.image && <p className={style.warning}>{error.image}</p>}
           </div>
           <div onChange={handleBoton}>
             <label className={style.etiquetas}>Ataque</label>
             <input
-            placeholder="21"
-            className={style.inputsNum}
+              placeholder="21"
+              className={style.inputsNum}
               type={"number"}
               value={form.attack}
               onChange={handleForm}
               name={"attack"}
             />
-            {error.attack  && <p className={style.warning} >{error.attack}</p>}
+            {error.attack && <p className={style.warning}>{error.attack}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label className={style.etiquetas}  >Defensa</label>
+            <label className={style.etiquetas}>Defensa</label>
             <input
-            placeholder="21"
-            className={style.inputsNum}
+              placeholder="21"
+              className={style.inputsNum}
               type={"number"}
               value={form.defense}
               onChange={handleForm}
               name={"defense"}
             />
-            {error.defense && <p className={style.warning} >{error.defense}</p>}
+            {error.defense && <p className={style.warning}>{error.defense}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label className={style.etiquetas}  >Velocidad</label>
+            <label className={style.etiquetas}>Velocidad</label>
             <input
-            placeholder="21"
-            className={style.inputsNum}
+              placeholder="21"
+              className={style.inputsNum}
               type={"number"}
               value={form.speed}
               onChange={handleForm}
               name={"speed"}
             />
-            {error.speed && <p className={style.warning} >{error.speed}</p>}
+            {error.speed && <p className={style.warning}>{error.speed}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label className={style.etiquetas}  >Altura</label>
+            <label className={style.etiquetas}>Altura</label>
             <input
-            placeholder="21"
-            className={style.inputsNum}
+              placeholder="21"
+              className={style.inputsNum}
               type={"number"}
               value={form.height}
               onChange={handleForm}
               name={"height"}
             />
-            {error.height && <p className={style.warning} >{error.height}</p>}
+            {error.height && <p className={style.warning}>{error.height}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label className={style.etiquetas} >Peso</label>
+            <label className={style.etiquetas}>Peso</label>
             <input
-            placeholder="21"
-            className={style.inputsNum}
+              placeholder="21"
+              className={style.inputsNum}
               type={"number"}
               value={form.weight}
               onChange={handleForm}
               name={"weight"}
             />
-            {error.weight && <p className={style.warning} >{error.weight}</p>}
+            {error.weight && <p className={style.warning}>{error.weight}</p>}
           </div>
           <div onChange={handleBoton}>
-            <label className={style.etiquetas} >Type</label>
+            <label className={style.etiquetas}>Type</label>
             <select className={style.tipos} onChange={handleSelect}>
               {types?.map((t, index) => (
-                <option  key={index} value={t.name}>
+                <option key={index} value={t.name}>
                   {t.name}
                 </option>
               ))}
             </select>
             <ul>
-              <li className={style.mostrarTipos} >{form.types.map((element) => element + " ")}</li>
+              <li className={style.mostrarTipos}>
+                {form.types.map((element) => element + " ")}
+              </li>
             </ul>
           </div>
           <div>
