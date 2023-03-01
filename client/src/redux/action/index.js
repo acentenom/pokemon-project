@@ -13,24 +13,24 @@ export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
 export const getPokemons = () => {
   return async function (dispatch) {
     try {
-      const pokemon = await axios.get(
-        "http://localhost:3001/pokemons"
-      );
+      const pokemon = await axios.get("http://localhost:3001/pokemons");
       return dispatch({ type: GET_ALL_POKEMONS, payload: pokemon.data });
     } catch (error) {
       throw error;
-    };
+    }
   };
 };
 
 export const getSearchPokemon = (name) => {
   return async function (dispatch) {
     try {
-      const search = await axios.get(`http://localhost:3001/pokemons/name?name=${name}`);
-      return dispatch({ type: GET_SEARCH, payload: search.data })
+      const search = await axios.get(
+        `http://localhost:3001/pokemons/name?name=${name}`
+      );
+      return dispatch({ type: GET_SEARCH, payload: search.data });
     } catch (error) {
       throw error;
-    };
+    }
   };
 };
 
@@ -41,7 +41,7 @@ export const getPokemonDetail = (id) => {
       return dispatch({ type: GET_DETAIL, payload: detail.data });
     } catch (error) {
       throw error;
-    };
+    }
   };
 };
 
@@ -52,41 +52,41 @@ export const createPokemon = (body) => {
       return create;
     } catch (error) {
       throw error;
-    };
+    }
   };
 };
 
 export const getTypes = () => {
   return async function (dispatch) {
-    const types = await axios.get(`http://localhost:3001/types`)
-    return dispatch({ type: GET_TYPES, payload: types.data })
+    const types = await axios.get(`http://localhost:3001/types`);
+    return dispatch({ type: GET_TYPES, payload: types.data });
   };
 };
 
 export const fitlerForOrigin = (payload) => {
   return {
     type: FILTER_FOR_ORIGIN,
-    payload
+    payload,
   };
 };
 
 export const filterByType = (payload) => {
   return {
     type: FILTER_BY_TYPE,
-    payload
-  }
-}
+    payload,
+  };
+};
 
 export const sortByAttack = (payload) => {
   return {
     type: SORT_ATTACK,
-    payload
+    payload,
   };
 };
 
 export const sortAlphabetical = (payload) => {
   return {
     type: SORT_ALPHABETICAL,
-    payload
-  }
-}
+    payload,
+  };
+};

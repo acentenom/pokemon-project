@@ -1,5 +1,5 @@
 "use strict";
-const getTypesPokemonModule = require('../modules/typesPokemonModule')
+const getTypesPokemonModule = require("../modules/typesPokemonModule");
 
 const getTypesPokemonController = async (req, res) => {
   try {

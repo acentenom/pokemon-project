@@ -7,15 +7,15 @@ import style from "../Home/home.module.css";
 import Paginated from "../Paginated/Paginated";
 import Navbar from "../Navbar/Navbar";
 import { FiltersByOrigin, FilterPokeByType } from "../Filters/Filters";
-import { sortByAttack } from "../../redux/action/index"
-import pokeApp from "../../image/pokeapp.png"
-import pokeball from "../../image/pokeball.gif"
+import { sortByAttack } from "../../redux/action/index";
+import pokeApp from "../../image/pokeapp.png";
+import pokeball from "../../image/pokeball.gif";
 
 const Home = () => {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
 
-  const [/* reload */, setReload ] = useState(false)
+  const [, /* reload */ setReload] = useState(false);
 
   /* Paginado */
 
@@ -37,33 +37,37 @@ const Home = () => {
     event.preventDefault();
     dispatch(sortByAttack(event.target.value));
     setReload((prevState) => !prevState);
-  }
+  };
 
   const handleSortAlphabetical = (event) => {
     event.preventDefault();
     dispatch(sortAlphabetical(event.target.value));
     setReload((prevState) => !prevState);
-  }
+  };
 
   const handleRefresh = (event) => {
     event.preventDefault();
-    dispatch(getPokemons())
-  }
+    dispatch(getPokemons());
+  };
 
   return (
     <div className={style.fondo}>
       <Navbar />
-      { pokePagina < 1 ?
-      <div>
-        <img src={pokeball} alt="cargando" />
-      </div> :
-      <>
-      <div>
-        <button className={style.recargar} onClick={handleRefresh} >Refrescar</button>
-      </div>
-      <div>
-          <img className={style.titulo} src={pokeApp} alt="" />
-        </div><div className={style.filtrosOrden}>
+      {pokePagina < 1 ? (
+        <div>
+          <img src={pokeball} alt="cargando" />
+        </div>
+      ) : (
+        <>
+          <div>
+            <button className={style.recargar} onClick={handleRefresh}>
+              Refrescar
+            </button>
+          </div>
+          <div>
+            <img className={style.titulo} src={pokeApp} alt="" />
+          </div>
+          <div className={style.filtrosOrden}>
             <FiltersByOrigin />
             <FilterPokeByType />
             <div className={style.ataqueOrden}>
@@ -82,10 +86,14 @@ const Home = () => {
                 <option value="Z to A">Z - A</option>
               </select>
             </div>
-          </div><div className={style.createPoke}>
-            <Link className={style.botonCrear} to="/create-pokemon">Create Pokemon</Link>
-          </div><div className={style.containerCard}>
-            {pokePagina.map(p => {
+          </div>
+          <div className={style.createPoke}>
+            <Link className={style.botonCrear} to="/create-pokemon">
+              Create Pokemon
+            </Link>
+          </div>
+          <div className={style.containerCard}>
+            {pokePagina.map((p) => {
               return (
                 <div key={p.id}>
                   <div>
@@ -93,18 +101,22 @@ const Home = () => {
                       <CardPokemon
                         name={p.name}
                         image={p.image}
-                        type={p.type} />
+                        type={p.type}
+                      />
                     </Link>
                   </div>
                 </div>
               );
             })}
-          </div><Paginated
+          </div>
+          <Paginated
             className={style.paginado}
             porPagina={porPagina}
             allPokemons={allPokemons.length}
-            paginadoDePokemon={paginadoDePokemon} /></>
-    }
+            paginadoDePokemon={paginadoDePokemon}
+          />
+        </>
+      )}
     </div>
   );
 };

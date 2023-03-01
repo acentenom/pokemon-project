@@ -101,7 +101,11 @@ const pokemonReducer = (state = initialState, action) => {
       let filterTypes =
         action.payload === "All"
           ? allTypes
-          : allTypes.filter((t) => t.type.includes(action.payload.charAt(0).toUpperCase() + action.payload.slice(1)));
+          : allTypes.filter((t) =>
+              t.type.includes(
+                action.payload.charAt(0).toUpperCase() + action.payload.slice(1)
+              )
+            );
       return {
         ...state,
         pokemons: filterTypes,

@@ -1,3 +1,5 @@
+"use strict"
+
 const { Pokemon, Type } = require("../db");
 const { Op } = require("sequelize");
 
@@ -46,12 +48,14 @@ const pokemonByIdFromDB = async (id) => {
       where: {
         id: id,
       },
-      include: [{
-        model: Type,
-        attributes: ["name"]
-      }]
+      include: [
+        {
+          model: Type,
+          attributes: ["name"],
+        },
+      ],
     });
-    return findByIdDB
+    return findByIdDB;
   } catch (error) {
     throw error;
   }
@@ -62,13 +66,15 @@ const searchByNameFromDB = async (name) => {
     const searchByName = await Pokemon.findAll({
       where: {
         name: {
-          [Op.like]: `%${name}%`
-        }
+          [Op.like]: `%${name}%`,
+        },
       },
-      include: [{
-        model: Type,
-        attributes: ["name"]
-      }]
+      include: [
+        {
+          model: Type,
+          attributes: ["name"],
+        },
+      ],
     });
     return searchByName;
   } catch (error) {
@@ -80,5 +86,5 @@ module.exports = {
   savePokemonHandler,
   getPokemonFromDB,
   pokemonByIdFromDB,
-  searchByNameFromDB
+  searchByNameFromDB,
 };
