@@ -6,7 +6,7 @@
 .nombre {
     position: absolute;
     top: 345px;
-    left: 660px;
+    left: 560px;
     color:white;
     font-weight: bold;
 }
@@ -14,22 +14,22 @@
 .pokemon {
     position: absolute;
     top: 440px;
-    left: 650px;
+    left: 610px;
     width: 125px;
 }
 
 .caracteristicas {
     color: white;
     position: absolute;
-    top: 380px;
-    left: 1005px;
+    top: 365px;
+    left: 935px;
     padding: 84px;
     background-color: rgb(240, 73, 73);
 }
 
 .back {
     position: absolute;
-    right: 1750px;
+    right: 1600px;
     font-size: 20px;
     border: solid 3px;
     border-radius: 6px;
