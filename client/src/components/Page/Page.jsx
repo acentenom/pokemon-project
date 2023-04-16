@@ -1,25 +1,33 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-import { getPokemons, sortAlphabetical } from "../../redux/action";
+import React, {useState} from "react";
+import CardPokemon from "../CardPokemon/CardPokemon";
+import Paginated from "../Paginated/Paginated";
 import style from "../Home/home.module.css";
-//import { FiltersByOrigin, FilterPokeByType } from "../Filters/Filters";
-import { sortByAttack } from "../../redux/action/index";
-/* import pokeApp from "../../image/pokeapp.png";
-import pokeball from "../../image/pokeball.gif"; */
-import Page from "../../components/Page/Page"
+import { FilterPokeByType } from "../Filters/Filters";
+import { FiltersByOrigin } from "../Filters/Filters";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useSelector, useDispatch } from "react-redux";
+import pokeball from "../../image/pokeball.gif"
+import { sortByAttack, sortAlphabetical } from "../../redux/action/index";
 
-const Home = () => {
+
+
+const Page = ({pagen}) => {
   const dispatch = useDispatch();
-  const allPokemons = useSelector((state) => state.pokemons);
+    const pokemons = useSelector((state) => state.pokemons);
+
+  //logica paginado
+  const [currentPage, setcurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState(12);
+  const final = currentPage * perPage;
+  const first = final - perPage;
+  const currentPokemon = pokemons.slice(first, final);
+  const page = (pagNum) => {
+    setcurrentPage(pagNum);
+  };
 
   const [, /* reload */ setReload] = useState(false);
 
-  useEffect(() => {
-    dispatch(getPokemons());
-  }, [dispatch]);
-
-/*   const handleSortAttack = (event) => {
+  const handleSortAttack = (event) => {
     event.preventDefault();
     dispatch(sortByAttack(event.target.value));
     setReload((prevState) => !prevState);
@@ -31,34 +39,22 @@ const Home = () => {
     setReload((prevState) => !prevState);
   };
 
-  const handleRefresh = (event) => {
-    event.preventDefault();
-    dispatch(getPokemons());
-  }; */
-
   return (
-
-        <div>
-            <Page projects = {allPokemons}/>
-        </div>
-
-    /* 
     <div className={style.fondo}>
-      <Navbar />
-      {pokePagina < 1 ? (
+      {currentPokemon < 1 ? (
         <div>
           <img src={pokeball} alt="cargando" />
         </div>
       ) : (
         <>
           <div>
-            <button className={style.recargar} onClick={handleRefresh}>
+         {/*    <button className={style.recargar} onClick={handleRefresh}>
               Refrescar
-            </button>
+            </button> */}
           </div>
-          <div>
+       {/*    <div>
             <img className={style.titulo} src={pokeApp} alt="" />
-          </div>
+          </div> */}
           <div className={style.filtrosOrden}>
             <FiltersByOrigin />
             <FilterPokeByType />
@@ -79,13 +75,13 @@ const Home = () => {
               </select>
             </div>
           </div>
-          <div className={style.createPoke}>
+      {/*     <div className={style.createPoke}>
             <Link className={style.botonCrear} to="/create-pokemon">
               Create Pokemon
             </Link>
-          </div>
+          </div> */}
           <div className={style.containerCard}>
-            {pokePagina.map((p) => {
+            {currentPokemon.map((p) => {
               return (
                 <div key={p.id}>
                   <div>
@@ -102,15 +98,15 @@ const Home = () => {
             })}
           </div>
           <Paginated
-            className={style.paginado}
-            porPagina={porPagina}
-            allPokemons={allPokemons.length}
-            paginadoDePokemon={paginadoDePokemon}
+          projectsPerPage={perPage}
+          projects={pokemons.length}
+          page={page}
+          currentPage={currentPage}
           />
         </>
       )}
-    </div> */
+    </div>
   );
-};
+}
 
-export default Home;
+export default Page;

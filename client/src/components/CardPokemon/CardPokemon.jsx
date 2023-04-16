@@ -1,18 +1,25 @@
 import React from "react";
-import style from "../CardPokemon/card.module.css";
+import "../CardPokemon/card.css";
+import pokeBall from "../../image/pokeball-.png";
 
 const CardPokemon = ({ name, image, type }) => {
   return (
-    <div className={style.containerCard}>
-      <h2 className={style.nameCard}>{name}</h2>
+    <div class="card" style={{ width: "18rem" }}>
+      <div>
       <img
-        className={style.imagePokemon}
+      className="card-img-top poke"
         src={image}
-        alt="img no found"
-        width="350px"
-        height="260px"
+        
+        alt={name}
+        width="100px"
+        height="100px"
       />
-      <h4 className={style.tipos}>{type.join(" - ")}</h4>
+      <img className="ball" src={pokeBall}  alt={name} />
+      </div>
+      <div class="card-body">
+        <p class="card-text">{name}</p>
+      </div>
+      <p class="card-text">{type.join(" - ")}</p>
     </div>
   );
 };
