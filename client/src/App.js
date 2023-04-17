@@ -4,12 +4,15 @@ import Home from './components/Home/Home.jsx';
 import LandingPage from './components/LandingPage/LandingPage';
 import PokemonDetail from './components/pokemonDetail/PokemonDetail';
 import CreatePokemon from './components/CreatePokemon/CreatePokemon';
+import Navbar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
 
 
 
 function App() {
   return (
     <BrowserRouter>
+    <Navbar />
     <div className="App">
       <Switch>
         <Route exact path="/">
@@ -26,6 +29,7 @@ function App() {
         </Route>
       </Switch>
     </div>
+    <Footer />
     </BrowserRouter>
   );
 }

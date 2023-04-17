@@ -19,7 +19,6 @@ const PokemonDetail = () => {
 
   return (
     <>
-      <Navbar />
       <div>
         <img className={style.pokedex} src={pokedex} alt="" />
         <Link to="/home">

@@ -1,0 +1,44 @@
+.footer-logo {
+  width: 2%;
+}
+
+.footer-texto {
+  font-size: 1.5rem;
+  padding: 20px;
+  margin-bottom: 30px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.iconos-redes-sociales a {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  margin: 10px;
+  border: 2px solid #FF801B;
+  border-radius: 50%;
+  transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales i {
+  color: #FF801B;
+  font-size: 1.5rem;
+  transition: all 0.2s ease-in;
+}
+
+.iconos-redes-sociales a:hover {
+  background-color: #333333;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.iconos-redes-sociales a:hover i {
+  color: rgb(224, 224, 224);
+}
+
+.derechos-de-autor {
+  font-size: 15px;
+  color: #000000;
+  padding: 20px;
+}

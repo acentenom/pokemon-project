@@ -21,7 +21,16 @@ const Navbar = () => {
   }
 
   return (
-    <>
+    <nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid" onClick={(e) => handleSubmit(e)}>
+    <Link class="navbar-brand" to="/home"><img src={pokemon} alt="home" width="50%"/></Link>
+    <form class="d-flex">
+      <input class="form-control me-2" type="text" placeholder="Buscar..." aria-label="Search"  onChange={handleInput}/>
+      <button class="btn btn-outline-success" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
+/*     <>
       <div onClick={(e) => handleSubmit(e)} className={style.barra}>
         <div>
           <Link className={style.homeBar} to="/home">
@@ -38,7 +47,7 @@ const Navbar = () => {
           Search
         </button>
       </div>
-    </>
+    </> */
   );
 };
 

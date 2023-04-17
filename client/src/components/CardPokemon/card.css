@@ -1,16 +1,48 @@
-.containerCard {
-    border: solid 8px black;
-    border-radius: 100%;
-    width: 18rem;
-    height: 18rem;
+/* .containerCard {
     background-color: rgb(0, 0, 0);
     background-image: url("../../image/pokeball-.png");
-    background-size: 28.5rem;
+    position: relative;
+    overflow: hidden;
+    max-width: 1140px;
+    margin: 0 auto;
     margin-bottom: 40px;
+} */
+
+.card {
+    padding-top: 80px;
+    margin-bottom: 20px;
+    z-index: -1;
+    border: none;
 }
 
+.poke {
+display: flex;
+justify-content: center;
+width: 90%;
+margin-bottom: -150px;
+z-index: 1;
+}
+.poke:hover {
+    display: flex;
+justify-content: center;
+    width: 100%;
+}
 
-.nameCard {
+.ball {
+display: flex;
+justify-content: center;
+position:relative;
+width: 90%;
+z-index: -1;
+/* width: 250px;
+height: 250px;
+overflow:hidden;
+margin-top:-200px;
+margin: auto; */
+
+}
+
+/* .nameCard {
     font-family: "Segoe Print";
     color: rgb(255, 255, 255);
     box-shadow: none;
@@ -41,4 +73,4 @@
     width: max-content;
     padding: 4px;
     margin: 40px;
-}
+} */
